@@ -1,7 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, NavLink, Navigate } from 'react-router-dom';
 
-import Home from './components/Home';
-import StringGenerator from './components/StringGenerator';
 import Translator from './components/Translator';
 
 function App() {
@@ -25,18 +23,12 @@ function App() {
                   Q
                 </div>
                 <span className="font-semibold text-lg tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-purple-200">
-                  QSkill Tools
+                  Quick Translate
                 </span>
               </div>
               
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-2">
-                  <NavLink to="/" className={navLinkClasses}>
-                    Home
-                  </NavLink>
-                  <NavLink to="/generator" className={navLinkClasses}>
-                    String Generator
-                  </NavLink>
                   <NavLink to="/translator" className={navLinkClasses}>
                     Translator
                   </NavLink>
@@ -48,8 +40,7 @@ function App() {
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/generator" element={<StringGenerator />} />
+            <Route path="/" element={<Navigate to="/translator" replace />} />
             <Route path="/translator" element={<Translator />} />
           </Routes>
         </main>

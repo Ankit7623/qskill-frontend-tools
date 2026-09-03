@@ -16,22 +16,18 @@ export default function Translator() {
     setTranslatedText('');
 
     try {
-      // Using a completely free API that requires no API keys!
-      const response = await axios.get(
-        'https://api.mymemory.translated.net/get',
-        {
-          params: {
-            q: inputText,
-            langpair: `en|${targetLang}`
-          }
-        }
+      // Using Google Translate free API for better global language support
+      const response = await fetch(
+        `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=${targetLang}&dt=t&q=${encodeURIComponent(inputText)}`
       );
 
-      if (response.data.responseStatus !== 200) {
-        throw new Error(response.data.responseDetails || 'Translation failed');
+      if (!response.ok) {
+        throw new Error('Translation failed');
       }
 
-      setTranslatedText(response.data.responseData.translatedText);
+      const data = await response.json();
+      const resultText = data[0].map(item => item[0]).join('');
+      setTranslatedText(resultText);
     } catch (err) {
       console.error('Translation Error:', err);
       setError(
@@ -98,12 +94,41 @@ export default function Translator() {
               onChange={(e) => setTargetLang(e.target.value)}
               className="w-full sm:w-56 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl px-5 py-4 focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 cursor-pointer appearance-none shadow-sm transition-all"
             >
-              <option value="es">Spanish</option>
-              <option value="fr">French</option>
-              <option value="de">German</option>
-              <option value="it">Italian</option>
-              <option value="ja">Japanese</option>
-              <option value="zh-Hans">Chinese (Simplified)</option>
+              <optgroup label="Global Languages">
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="it">Italian</option>
+                <option value="ja">Japanese</option>
+                <option value="zh-Hans">Chinese (Simplified)</option>
+                <option value="ar">Arabic</option>
+                <option value="pt">Portuguese</option>
+                <option value="ru">Russian</option>
+                <option value="ko">Korean</option>
+                <option value="nl">Dutch</option>
+                <option value="tr">Turkish</option>
+                <option value="pl">Polish</option>
+                <option value="vi">Vietnamese</option>
+                <option value="id">Indonesian</option>
+                <option value="th">Thai</option>
+                <option value="el">Greek</option>
+              </optgroup>
+              <optgroup label="Indian Languages">
+                <option value="hi">Hindi</option>
+                <option value="bn">Bengali</option>
+                <option value="te">Telugu</option>
+                <option value="mr">Marathi</option>
+                <option value="ta">Tamil</option>
+                <option value="ur">Urdu</option>
+                <option value="gu">Gujarati</option>
+                <option value="kn">Kannada</option>
+                <option value="ml">Malayalam</option>
+                <option value="pa">Punjabi</option>
+                <option value="or">Odia</option>
+                <option value="as">Assamese</option>
+                <option value="sd">Sindhi</option>
+                <option value="sa">Sanskrit</option>
+              </optgroup>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
