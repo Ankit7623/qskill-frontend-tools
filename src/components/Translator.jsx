@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 export default function Translator() {
   const [inputText, setInputText] = useState('');
