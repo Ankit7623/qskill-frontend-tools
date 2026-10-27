@@ -42,11 +42,11 @@ export default function Translator() {
     <div className="max-w-5xl mx-auto mt-4">
       <div className="bg-white rounded-[2.5rem] shadow-[0_0_50px_-12px_rgba(255,255,255,0.1)] border border-slate-100 p-8 md:p-12 relative overflow-hidden">
         
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-64 bg-gradient-to-b from-purple-50 to-white blur-3xl pointer-events-none"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-64 bg-gradient-to-b from-mock-orange/15 via-claret-red/5 to-white blur-3xl pointer-events-none"></div>
 
         <div className="flex items-center justify-center mb-10 relative z-10">
           <h2 className="text-4xl font-extrabold text-slate-900 text-center drop-shadow-sm">
-            Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">Translator</span>
+            Free <span className="text-transparent bg-clip-text bg-gradient-to-r from-claret-red via-pomegranate to-mock-orange">Translator</span>
           </h2>
         </div>
 
@@ -58,7 +58,7 @@ export default function Translator() {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               placeholder="Type something in English to translate..."
-              className="w-full bg-white border-2 border-slate-200 rounded-2xl p-5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 resize-none min-h-[220px] transition-all shadow-sm font-medium text-lg"
+              className="w-full bg-white border-2 border-slate-200 rounded-2xl p-5 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-claret-red focus:ring-4 focus:ring-claret-red/20 resize-none min-h-[220px] transition-all shadow-sm font-medium text-lg"
             />
           </div>
 
@@ -91,7 +91,7 @@ export default function Translator() {
             <select
               value={targetLang}
               onChange={(e) => setTargetLang(e.target.value)}
-              className="w-full sm:w-56 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl px-5 py-4 focus:outline-none focus:border-purple-400 focus:ring-4 focus:ring-purple-400/20 cursor-pointer appearance-none shadow-sm transition-all"
+              className="w-full sm:w-56 bg-white border-2 border-slate-200 text-slate-700 font-bold rounded-xl px-5 py-4 focus:outline-none focus:border-claret-red focus:ring-4 focus:ring-claret-red/20 cursor-pointer appearance-none shadow-sm transition-all"
             >
               <optgroup label="Global Languages">
                 <option value="es">Spanish</option>
@@ -139,7 +139,7 @@ export default function Translator() {
             disabled={isLoading || !inputText.trim()}
             className="w-full sm:w-auto group relative flex items-center justify-center gap-3 bg-slate-900 text-white font-bold py-4 px-10 rounded-xl transition-all duration-300 active:scale-[0.98] shadow-xl shadow-slate-900/20 hover:shadow-slate-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-slate-900/20 overflow-hidden"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-claret-red via-pomegranate to-mock-orange opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             {isLoading ? (
               <>
                 <svg className="animate-spin relative z-10 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ export default function Translator() {
               </>
             ) : (
               <>
-                <svg className="w-6 h-6 relative z-10 text-purple-400 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="w-6 h-6 relative z-10 text-mock-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                 </svg>
                 <span className="relative z-10 text-lg">Translate Text</span>

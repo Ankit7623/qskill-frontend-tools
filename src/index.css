@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-pomegranate: #C0392B;
+  --color-pomeranate: #C0392B;
+  --color-mock-orange: #FFA368;
+  --color-claret-red: #C84B61;
+}
